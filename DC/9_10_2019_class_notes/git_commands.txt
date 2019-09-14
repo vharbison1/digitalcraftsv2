@@ -1,0 +1,9 @@
+git status Tell us which files to push up
+git add -A #Adds all the files to be saves
+git commit -m "Description of wha changes"
+git push origin master #save the files to git
+
+git checkout -b {branch_name} #Creates  a new branch
+git branch 
+git checkout {branch_aname} #switch between branches 
+git pull origin {branch_name} #pull the latest changes from git

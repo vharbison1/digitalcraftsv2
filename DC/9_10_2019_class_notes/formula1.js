@@ -5,14 +5,12 @@
 // Customer Churn Rate: The rate at which your customers are cancelling their subscription. ]
 
 
+var ltvFunction = function(ARPA, GrossMargin, CCR) {
+var LTV = (ARPA * GrossMargin) / CCR;
+return LTV;
+}
 
-var LTV;
-var ARPA = 5;
-var GrossMargin = 10;
-var CCR = 7;
-
-LTV = (ARPA * GrossMargin) / CCR;
-
-console.log(5);
-
+console.log(ltvFunction(10,2,5));
+console.log("Steve thinks blahblah " + ltvFunction(20,10,15));
+console.log("John thinks the LTV should be " + ltvFunction(10,23,45));
 
