@@ -60,7 +60,7 @@ var vendingMachine = {
         { name: 'John', currencytotal: ["Dime", "Quarter", "Dollar"], snackpurchase: "Nuts", validcurrency: "", numbertotal: ""},
         { name: 'Rhonda', currencytotal: ["Dollar","Penny"], snackpurchase: "Nuts", validcurrency: "", numbertotal: ""},
         { name: 'Vanessa', currencytotal: ["Dime", "Quarter"], snackpurchase: "Cookies", validcurrency: "", numbertotal: ""},
-        { name: 'Natalie', currencytotal: ["Nickle", "Nickle", "Nickle"], snackpurchase: "Chewing Gum", validcurrency: "", numbertotal: ""} ],
+        { name: 'Natalie', currencytotal: ["Nickle", "Nickle", "Nickle"], snackpurchase: "", validcurrency: "", numbertotal: ""} ],
     
     checkCurrency : function()
     {
@@ -142,7 +142,7 @@ var vendingMachine = {
        var updatedCustomerTotalCurrencyObject = vendingMachine.totalCurrency(); //This object holds the total number the customer input into the totalnumber key
        var getSnackPrice;
        var message = "";
-       vendingMachine.showPrice();
+       vendingMachine.showPrice(); //Shows Snacks and Prices
 
        for (var i = 0; i < updatedCustomerTotalCurrencyObject.length;i++)
        {
@@ -162,15 +162,15 @@ var vendingMachine = {
                     }
                 }
 
-                if(customerNumberTotal < getSnackPrice) // If the amount entered is less than what the item cost, an error message is produced stating they have not entered enough money
+                if(customerChosenSnack != "" && customerNumberTotal < getSnackPrice) // If the amount entered is less than what the item cost, an error message is produced stating they have not entered enough money
                 {
                     console.log(customerName + ": ERROR NOT ENOUGH MONEY ENTERED");
                 }
-                else if (customerNumberTotal >= getSnackPrice) //If the amount is equal to or above the amount of the item, they should get their item and left over change, if any
+                else if (customerChosenSnack != "" && customerNumberTotal >= getSnackPrice) //If the amount is equal to or above the amount of the item, they should get their item and left over change, if any
                 {
                     console.log(customerName + ": PURCHASE CONFIRMED. HERE IS YOUR LEFTOVER CHANGE: " + (customerNumberTotal - getSnackPrice));
                 }
-                else //-- If they do not choose an item, all the money can be returned to them
+                else  //-- If they do not choose an item, all the money can be returned to them
                 {
                     console.log(customerName + ": NO ITEM CHOSEN. ALL MONEY WILL BE RETURNED");
                 }
@@ -184,3 +184,19 @@ var vendingMachine = {
 };
 
 vendingMachine.purchase();
+
+/*
+Results 
+Snacks: Snickers | Price: 1.25
+Snacks: Popcorn | Price: 1
+Snacks: Chewing Gum | Price: 0.25
+Snacks: Nuts | Price: 0.5
+Snacks: Cookies | Price: 1.7
+Snacks: Cup Noodles | Price: 2.25
+
+Sarah: ERROR NOT ENOUGH MONEY ENTERED
+John: PURCHASE CONFIRMED. HERE IS YOUR LEFTOVER CHANGE: 0.8500000000000001
+Rhonda: INVALID CURRENCY DETECTED. WE ONLY ACCEPT XXXXXXX. SPITS OUT EVERYTHING
+Vanessa: ERROR NOT ENOUGH MONEY ENTERED
+Natalie: NO ITEM CHOSEN. ALL MONEY WILL BE RETURNED
+*/
