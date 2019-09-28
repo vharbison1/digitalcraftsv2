@@ -1,0 +1,28 @@
+h1 
+{
+    color: cyan;
+}
+
+body 
+{
+    background-color:cornflowerblue;
+}
+
+h3 
+{
+    color:blue;
+}
+
+li > a 
+{
+    color:white;
+}
+
+.green-text 
+{
+    color:greenyellow;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
