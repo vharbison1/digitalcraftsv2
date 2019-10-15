@@ -1,0 +1,39 @@
+<!--
+1. Create a simple webpage.
+2. Webpage will have 1 button
+3. When the button is clicked, after 10 seconds, user the alert to display "Hello DIgitalCrafts"
+Step by step process:
+1. Create a basic webpage (html, header, body, etc)
+2. In the bottom tag, should be  a script, This is where your js will reside, no need to link a file
+3. In the body, there will be a button
+4. When the button is clicked, it should call the javascript in your script tag in the header
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple WebPage Time-out</title>
+    </head>
+    <body>
+        <button id="timeout-alert">Timeout Alert!</button>
+        <script type="text/javascript">
+            var getElement = document.getElementById('timeout-alert');
+/*             getElement.onclick = function()
+            {
+                setTimeout(function()
+                    { 
+                        alert("Hello DigitalCrafts!"); 
+                    }, 3000);
+            }
+ */
+            function countdown() {
+                setTimeout(function()
+                    { 
+                        alert("Hello DigitalCrafts!"); 
+                    }, 3000);
+            }
+            
+            getElement.onclick = countdown();
+        </script>
+    </body>
+</html>

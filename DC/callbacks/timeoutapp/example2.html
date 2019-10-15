@@ -1,0 +1,43 @@
+<!--
+For the next assigment, we are using setInterval. https://www.w3schools.com/jsref/met_win_setinterval.asp
+1. Create a simple webpage (html, body, head, etc)
+2. Create an array of String in Javascript
+3. Every 5 seconds, output a new item to an ordered list
+4. When the array is empty, stop trying to add items.
+Bonus: Can you kill the interval function execution?
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Another Simple Web Timeout</title>
+    </head>
+    <body>
+       <ul id="list-container">
+       </ul>
+       </div> 
+    </body>
+    <script type="text/javascript">
+
+        var listContainerElement = document.getElementById('list-container');
+
+        var animals = ['cat', 'dog', 'cow', 'squirrel'];
+
+
+        var myAnimalInterval = setInterval(function()
+        {
+            var animal = animals.pop();
+
+            if(animals.length > 0)
+            {
+                listContainerElement.append('<li>' + animal + '</li>');
+            }
+            else 
+            {
+                clearInterval(myAnimalInterval);
+            }
+        
+        }, 3000);
+
+    </script>
+</html>
