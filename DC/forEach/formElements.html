@@ -1,0 +1,157 @@
+<html>
+    <head>
+ 
+    </head>
+    <body>
+        <div id="divElement">
+
+        </div>
+    </body>
+    <script type="text/javascript">
+
+        /**
+        * Below we are going to create different type of form elements in html. To start, please
+        * read the following information on each form element:
+        *
+        * password: https://www.w3schools.com/tags/att_input_type_password.asp
+        * textarea : https://www.w3schools.com/tags/tag_textarea.asp
+        * text: https://www.w3schools.com/tags/tag_input.asp
+        * checkbox: https://www.w3schools.com/tags/att_input_type_checkbox.asp
+        *
+        * Your task is to:
+        * 1. Iterate through the array, and create an element based on the type. 
+        * 2. The properites disabled, id, value and class will relate to that elements object
+        * and should appear in the html. For example, id : "my-text" should be <input type="text" id="my-text" />
+        * 3. As each form element is created, a button should be created. When that button is clicked, is should update
+        * the approrpiate object in the data array. For example, value : "A line of text" at array index 0 should be updated
+        * when the button for the text input is clicked
+        */
+        var data = [
+            {
+                type: "text",
+                disabled : false,
+                id : "my-text",
+                value : "A line of text",
+                class : "form-control",
+                maxLength: 255
+            },
+            {
+                type: "password",
+                disabled : false,
+                id : "my-passwod",
+                value : "",
+                class : "form-control"
+            },
+            {
+                type: "textarea",
+                disabled : false,
+                id : "my-textarea",
+                value : "Hello World, How Are You?",
+                style: "background-color: blue;",
+                class : "form-control"
+            },
+            {
+                type: "checkbox",
+                disabled : true,
+                id : "my-checkbox",
+                value : "1",
+                class : ""
+            },
+        ];
+
+        var formContainer = document.getElementById('divElement');
+
+        data.forEach(function(item, index){
+
+            var element = null;             
+
+            if(item.type == "text")
+            {
+                element = document.createElement("input");
+/*                 element.type = "text";
+                element.disabled = false;
+                element.id = "my-text";
+                element.value = "A line of text";
+                element.class = "form-control";
+                element.maxlength = 255; */
+            }
+            else if (item.type == "password")
+            {
+                element = document.createElement("input");
+/*                 element.type = "password";
+                element.disabled = false;
+                element.id = "my-password";
+                element.value = "";
+                element.class = "form-control"; */
+            }
+            else if (item.type == "textarea")
+            {
+                element = document.createElement("textarea");
+/*                 element.type = "textarea";
+                element.disabled = false;
+                element.id = "my-textarea";
+                element.value = "Hello World, How Are You?";
+                element.style = "background-color:blue";
+                element.class = ""; */
+            }
+            else 
+            {
+                element = document.createElement("input");
+/*                 element.type = "checkbox";
+                element.disabled = true;
+                element.id = "my-checkbox";
+                element.value = "1";
+                element.class = ""; */
+            }
+
+            if(item.type)
+            {
+                element.setAttribute("type", item.type);
+            }
+
+            if(item.disabled)
+            {
+                element.setAttribute("disabled", "disabled");
+            }
+
+            if(item.id)
+            {
+                element.setAttribute("id", item.id);
+            }
+
+            if(item.value)
+            {
+                element.setAttribute("value", item.value);
+            }
+
+            if(item.style)
+            {
+                element.setAttribute("style", item.style);
+            }
+
+            if(item.class)
+            {
+                element.setAttribute("value", item.class);
+            }
+
+            if(item.maxlength)
+            {
+                element.setAttribute("maxlength", item.maxlength);
+            }
+
+            var formLabel = document.createElement("label");
+            formLabel.innerHTML = "Element " + item.id;
+
+            var hr = document.createElement("hr");
+
+            formContainer.appendChild(formLabel);
+            formContainer.appendChild(hr);
+            formContainer.appendChild(element); 
+        });
+
+        var createHtmlFromObject = function(dataObject) {
+
+        }
+    
+    </script>
+</html>
