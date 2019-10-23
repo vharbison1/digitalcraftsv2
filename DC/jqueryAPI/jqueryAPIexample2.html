@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jquery API Example 2</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!--<link rel="stylesheet" href="styles.css"> -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://kit.fontawesome.com/e5bd83b59d.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+            <div class="form-group">
+                <select class="form-control" id="breedSelect">
+                </select>
+            </div>
+            <div id="imageContainer"></div>
+    </body>
+
+    <script type="text/javascript">
+
+        var breedSelect = document.getElementById('breedSelect');
+
+        //Calls AXIOS
+        var URL = "https://dog.ceo/api/breeds/list";
+         axios.get(URL)
+         .then(function(dataObject)
+        {
+            var getBreedArray = dataObject.data.message;
+            breedList(getBreedArray,breedSelect);
+        });
+
+
+        function breedList(breedArray,selectElement)
+        {
+            for(var i = 0; i < breedArray.length;i++)
+            {
+            var breedOptions = document.createElement("option");
+            breedOptions.text = breedArray[i];
+            selectElement.appendChild(breedOptions);
+            }
+        }
+
+        breedSelect.addEventListener('change', function() {
+            var URL = "https://dog.ceo/api/breed/" + this.value + "/images/random";
+            axios.get(URL)
+            .then(function(dataObject)
+            {
+                var imageContainer = document.getElementById('imageContainer');
+                var createImage = document.createElement('img');
+                createImage.setAttribute('src', dataObject.data.message);
+                imageContainer.appendChild(createImage);
+            });
+        });
+
+        
+    </script>
+</html>
+    
